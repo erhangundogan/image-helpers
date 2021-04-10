@@ -1,7 +1,7 @@
 {
   "name": "image-helpers",
   "version": "1.0.0",
-  "description": "DOM image helper functions",
+  "description": "Helper methods to receive and create HTMLImageElements",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/erhangundogan/image-helpers.git"
