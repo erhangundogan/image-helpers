@@ -11,7 +11,7 @@ export interface ImageType {
   hash?: number | null;
 }
 
-const createImage = (url: string, imageData: any = {}): Promise<any> => {
+const createImage = (url: string, imageData: any = {}): Promise<ImageType> => {
   return new Promise((resolve, reject) => {
     const image = new Image();
     image.addEventListener('load', () => {

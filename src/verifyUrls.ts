@@ -7,8 +7,8 @@ export interface VerifyUrlsPropsType {
   testUrls?: boolean
 }
 
-const verifyUrls = async (urls: Array<string>, options: VerifyUrlsPropsType = {}) => {
-  const verifiedUrls = new Set();
+const verifyUrls = async (urls: Array<string>, options: VerifyUrlsPropsType = {}): Promise<Array<string>> => {
+  const verifiedUrls = new Set<string>();
 
   if (!Array.isArray(urls) || urls.length === 0) {
     return [];

@@ -1,6 +1,6 @@
 {
   "name": "image-helpers",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Helper methods to receive and create HTMLImageElements",
   "repository": {
     "type": "git",
@@ -21,7 +21,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "lint": "eslint \"src/**/*.{js,ts}\"",
-    "test": "rimraf coverage && jest --watchAll",
+    "test": "rimraf coverage && jest",
     "build": "npm run clean && NODE_ENV=development rollup -c rollup.config.js",
     "build:prod": "npm run clean && NODE_ENV=production rollup -c rollup.config.js",
     "watch": "npm run clean && NODE_ENV=development rollup -cw rollup.config.js",
