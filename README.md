@@ -31,7 +31,8 @@ const fetchImages = async (
 export interface VerifyUrlsPropsType {
   maxFileSize?: number;
   ignoreRequestErrors?: boolean;
-  testUrls?: boolean
+  testUrls?: boolean;
+  requiredOrigin?: string | undefined;
 }
 const verifyUrls = async (urls: Array<string>, options: VerifyUrlsPropsType = {}): Promise<Array<string>> => {}
 ```

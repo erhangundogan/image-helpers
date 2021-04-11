@@ -10,7 +10,7 @@ export interface RequestImageOptionsPropsType {
 const requestImage = async (url: string, options: RequestImageOptionsPropsType = {}) => {
   try {
     const { generateHash, fetchOptions } = options;
-    const requestOptions: RequestInit = { cache: 'force-cache', ...fetchOptions };
+    const requestOptions: RequestInit = { cache: 'force-cache', mode: 'cors' , ...fetchOptions };
     const response = await fetch(url, requestOptions);
     const blob = await response.blob();
     const reader = new FileReader();

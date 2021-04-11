@@ -38,6 +38,6 @@ describe('requestImage', () => {
 
   test('resolves with default options', async () => {
     await expect(requestImage(url)).resolves.toEqual(imageData);
-    expect(fetch).toBeCalledWith(url, { 'cache': 'force-cache' });
+    expect(fetch).toBeCalledWith(url, { cache: 'force-cache', mode: 'cors' });
   });
 });

@@ -12,6 +12,17 @@ describe('verifyUrls', () => {
     await expect(verifyUrls(undefined)).resolves.toEqual([]);
   })
 
+  test.only('return URLs having requiredOrigin', async () => {
+    await expect(verifyUrls([
+      'http://www.google.com',
+      'https://www.google.com/',
+      'http://www.github.com',
+      'https://www.github.com/foo'
+    ], { requiredOrigin: 'https://www.github.com/' })).resolves.toEqual([
+      'https://www.github.com/foo'
+    ]);
+  })
+
   test('unique urls return', async () => {
     await expect(verifyUrls([
       'https://www.github.com',

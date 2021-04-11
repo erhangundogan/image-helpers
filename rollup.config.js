@@ -7,46 +7,42 @@ import filesize from 'rollup-plugin-filesize';
 
 const production = process.env.NODE_ENV === 'production';
 
-const plugins = [
-  replace({
-    preventAssignment: true,
-    values: {
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-    }
-  }),
-  ts({
-    tsconfig: production ? 'tsconfig.prod.json' : 'tsconfig.json'
-  }),
-  commonjs(),
-  resolve({
-    browser: true,
-    preferBuiltins: true
-  }),
-  production ? filesize() : null
-]
-
 export default {
   input: 'src/index.ts',
   output: [
     {
-      sourcemap: true,
+      sourcemap: !production,
       file: 'dist/cjs/image-helpers.js',
       format: 'cjs'
     },
     {
       sourcemap: !production,
-      file: 'dist/umd/image-helpers.js',
-      format: 'umd',
-      name: 'ImageHelpers',
-      plugins: [
-        production ? terser() : null
-      ]
-    },
-    {
-      sourcemap: true,
       file: 'dist/es/image-helpers.js',
       format: 'es'
     },
+    {
+      sourcemap: !production,
+      file: 'dist/umd/image-helpers.js',
+      format: 'umd',
+      name: 'ImageHelpers'
+    }
   ],
-  plugins
+  plugins: [
+    replace({
+      preventAssignment: true,
+      values: {
+        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+      }
+    }),
+    ts({
+      tsconfig: production ? 'tsconfig.prod.json' : 'tsconfig.json'
+    }),
+    commonjs(),
+    resolve({
+      browser: true,
+      preferBuiltins: true
+    }),
+    production ? terser() : null,
+    production ? filesize() : null
+  ]
 };
