@@ -17,6 +17,7 @@ const createImage = (url: string, imageData: any = {}): Promise<ImageType> => {
     image.addEventListener('load', () => {
       const data = {
         ...imageData,
+        image,
         width: image.naturalWidth,
         height: image.naturalHeight,
         time: Date.now(),
