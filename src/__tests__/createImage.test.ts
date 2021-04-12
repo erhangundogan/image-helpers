@@ -37,12 +37,6 @@ describe('createImage', () => {
     await expect(createImage(url)).resolves.toEqual({
       width: 100,
       height: 100,
-      image: {
-        addEventListener: expect.any(Function),
-        naturalHeight: 100,
-        naturalWidth: 100,
-        src: 'https://images.unsplash.com/photo-1547986164-81d93de7929c?w=800&q=80',
-      },
       time: 1617960172222,
       url
     })
