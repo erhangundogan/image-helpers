@@ -19,6 +19,6 @@ const validateUrl = (url, requiredOrigin) => {
   } catch (err) {
     return null;
   }
-}
+};
 
 export default validateUrl;

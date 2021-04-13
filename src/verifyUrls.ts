@@ -1,12 +1,8 @@
 import validateUrl from './validateUrl';
 import testUrl from './testUrl';
+import { VerifyUrlPropsType } from './verifyUrl';
 
-export interface VerifyUrlsPropsType {
-  maxFileSize?: number;
-  ignoreRequestErrors?: boolean;
-  testUrls?: boolean;
-  requiredOrigin?: string | undefined;
-}
+export type VerifyUrlsPropsType = VerifyUrlPropsType;
 
 const verifyUrls = async (urls: Array<string>, options: VerifyUrlsPropsType = {}): Promise<Array<string>> => {
   const verifiedUrls = new Set<string>();
@@ -16,7 +12,7 @@ const verifyUrls = async (urls: Array<string>, options: VerifyUrlsPropsType = {}
   }
 
   // maxFileSize 10MB (10485760 = 10 * 1024 * 1024)
-  const { maxFileSize = 10485760, ignoreRequestErrors = false, testUrls = false, requiredOrigin } = options;
+  const { maxFileSize = 10485760, ignoreRequestErrors = false, requestUrl = false, requiredOrigin } = options;
 
   const urlSet = new Set(urls);
   for (const url of urlSet) {
@@ -27,7 +23,7 @@ const verifyUrls = async (urls: Array<string>, options: VerifyUrlsPropsType = {}
         continue;
       }
 
-      if (!testUrls) {
+      if (!requestUrl) {
         verifiedUrls.add(validatedUrl);
         continue;
       }

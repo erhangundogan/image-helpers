@@ -1,16 +1,19 @@
 import 'whatwg-fetch';
 import murmurhash from 'murmurhash';
-import createImage from './createImage';
+import createImage, { ImageType } from './createImage';
 
 export interface RequestImageOptionsPropsType {
   generateHash?: boolean;
   fetchOptions?: RequestInit;
 }
 
-const requestImage = async (url: string, options: RequestImageOptionsPropsType = {}) => {
+const requestImage = async (
+  url: string,
+  options: RequestImageOptionsPropsType = { generateHash: false, fetchOptions: {} }
+): Promise<ImageType> => {
   try {
     const { generateHash, fetchOptions } = options;
-    const requestOptions: RequestInit = { cache: 'force-cache', mode: 'cors' , ...fetchOptions };
+    const requestOptions: RequestInit = { cache: 'force-cache', mode: 'cors', ...fetchOptions };
     const response = await fetch(url, requestOptions);
     const blob = await response.blob();
     const reader = new FileReader();

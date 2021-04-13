@@ -16,13 +16,10 @@ describe('testUrl', () => {
     await expect(testUrl('https://www.example.com')).resolves.toEqual(true);
   });
 
-  test('URL test is OK', async () => {
+  test('URL test is OK with headers', async () => {
     fetch.mockResolvedValue({
       ok: true,
-      headers: [
-        { 'content-type': 'image/jpeg' },
-        { 'content-length': 1048576 }
-      ]
+      headers: [{ 'content-type': 'image/jpeg' }, { 'content-length': 1048576 }]
     });
     await expect(testUrl('https://www.example.com')).resolves.toEqual(true);
   });
@@ -33,7 +30,7 @@ describe('testUrl', () => {
       log: jest.fn(),
       error: jest.fn(),
       warn: jest.fn()
-    }
+    };
     fetch.mockResolvedValue({
       ok: false
     });
@@ -41,13 +38,13 @@ describe('testUrl', () => {
     expect(console.error).toBeCalledTimes(1);
   });
 
-  test('URL test is not OK', async () => {
+  test('URL test is not OK with an error', async () => {
     // @ts-ignore
     global.console = {
       log: jest.fn(),
       error: jest.fn(),
       warn: jest.fn()
-    }
+    };
     fetch.mockRejectedValue({ error: 'ERROR' });
     await expect(testUrl('https://www.example.com')).resolves.toEqual(false);
     expect(console.error).toBeCalledTimes(1);
