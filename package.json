@@ -1,6 +1,6 @@
 {
   "name": "image-helpers",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Helper methods to receive and create HTMLImageElement(s)",
   "repository": {
     "type": "git",

@@ -8,7 +8,7 @@ export interface VerifyUrlPropsType {
   requiredOrigin?: string | undefined;
 }
 
-const verifyUrls = async (url: string, options: VerifyUrlPropsType = {}): Promise<string> => {
+const verifyUrl = async (url: string, options: VerifyUrlPropsType = {}): Promise<string> => {
   if (!url) {
     return null;
   }
@@ -39,4 +39,4 @@ const verifyUrls = async (url: string, options: VerifyUrlPropsType = {}): Promis
   return null;
 };
 
-export default verifyUrls;
+export default verifyUrl;
