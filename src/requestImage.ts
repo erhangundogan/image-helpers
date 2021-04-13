@@ -1,11 +1,7 @@
 import 'whatwg-fetch';
 import murmurhash from 'murmurhash';
-import createImage, { ImageType } from './createImage';
-
-export interface RequestImageOptionsPropsType {
-  generateHash?: boolean;
-  fetchOptions?: RequestInit;
-}
+import createImage from './createImage';
+import { ImageType, RequestImageOptionsPropsType } from './types';
 
 const requestImage = async (
   url: string,

@@ -1,16 +1,7 @@
 import 'whatwg-fetch';
 import requestImage from './requestImage';
-import createImage, { ImageType } from './createImage';
-
-export interface FetchImagesOptionsPropsType {
-  tryCors?: boolean;
-  failEarly?: boolean;
-}
-
-export interface FetchImagesCorsOptionsPropsType {
-  generateHash?: boolean;
-  fetchOptions?: RequestInit;
-}
+import createImage from './createImage';
+import { FetchImagesCorsOptionsPropsType, FetchImagesOptionsPropsType, ImageType } from './types';
 
 const fetchImages = async (
   imageUrls: string[] = [],

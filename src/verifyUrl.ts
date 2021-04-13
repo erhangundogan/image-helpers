@@ -1,12 +1,6 @@
 import validateUrl from './validateUrl';
 import testUrl from './testUrl';
-
-export interface VerifyUrlPropsType {
-  maxFileSize?: number;
-  ignoreRequestErrors?: boolean;
-  requestUrl?: boolean;
-  requiredOrigin?: string | undefined;
-}
+import { VerifyUrlPropsType } from './types';
 
 const verifyUrl = async (url: string, options: VerifyUrlPropsType = {}): Promise<string> => {
   if (!url) {

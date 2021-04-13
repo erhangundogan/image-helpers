@@ -1,6 +1,6 @@
 import validateUrl from './validateUrl';
 import testUrl from './testUrl';
-import { VerifyUrlPropsType } from './verifyUrl';
+import { VerifyUrlPropsType } from './types';
 
 export type VerifyUrlsPropsType = VerifyUrlPropsType;
 

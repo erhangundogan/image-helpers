@@ -1,15 +1,5 @@
 import 'whatwg-fetch';
-
-export interface ImageType {
-  url: string;
-  width: number;
-  height: number;
-  time: number;
-  dataUrl?: string;
-  size?: number;
-  type?: string;
-  hash?: number | null;
-}
+import { ImageType } from './types';
 
 const createImage = (url: string, imageData: any = {}): Promise<ImageType> => {
   return new Promise((resolve, reject) => {
